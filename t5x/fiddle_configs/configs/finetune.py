@@ -13,6 +13,7 @@
 # limitations under the License.
 
 """Fiddle-config helpers equivalent to t5x/configs/runs/finetune.gin."""
+
 from collections.abc import Mapping
 import copy
 from typing import Optional, Union
@@ -208,7 +209,7 @@ def infer_eval_dataset_config(
   return fdl.Config(
       utils.DatasetConfig,
       mixture_or_task_name=mixture_or_task_name,
-      task_feature_lengths=None,  # compute max
+      task_feature_lengths={},  # compute max
       split='validation',
       batch_size=batch_size,
       shuffle=False,
